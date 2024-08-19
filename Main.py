@@ -30,8 +30,6 @@ def getCentroide(data, distance_max, min_point_gpe):
 def getCentroidePerCluster(data, distance_max, min_point_gpe):
     coordinates = transform_data(data)
     coords_in_radians = np.radians(coordinates)
-    
-    # Clustering avec DBSCAN
     db = DBSCAN(eps=distance_max/6371.0, min_samples=min_point_gpe, algorithm='ball_tree', metric='haversine').fit(coords_in_radians)
     labels = db.labels_
     unique_labels = set(labels)
