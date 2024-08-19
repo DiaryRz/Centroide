@@ -1,0 +1,5 @@
+Je suis sur python , j'aimerais avoir une algorithme qui calcul le centroide d'une ensemble de point geographique donne, c'est a dire avoir le point la plus proche de ses points geographiquement.
+-je veux une fonction qui prend en parametre une liste de coordonnee geographique.
+-la liste de coordonne est repartie en cluster de groupe de 5 ou autre que l'on peut preciser et on peut aussi definir une distance maximum , en utilisant l'une des bibliotheques de cluster en python comme dbscam ou keymeans ou infinity propagation ou autre le plus precis et performant.
+-lorsque on a les groupes de coordonnees qui ce ressemblent on calcul le centroide de chaque groupe
+-Et a la fin on a une array de coordonnee de centroide de chaque groupe donnee 
