@@ -3,3 +3,6 @@ scikit-learn
 folium
 geopy
 flask
+pymongo
+osmnx
+networkx
