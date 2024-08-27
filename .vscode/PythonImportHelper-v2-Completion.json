@@ -1,54 +1,5 @@
 [
     {
-        "label": "MongoClient",
-        "importPath": "pymongo",
-        "description": "pymongo",
-        "isExtraImport": true,
-        "detail": "pymongo",
-        "documentation": {}
-    },
-    {
-        "label": "errors",
-        "importPath": "pymongo",
-        "description": "pymongo",
-        "isExtraImport": true,
-        "detail": "pymongo",
-        "documentation": {}
-    },
-    {
-        "label": "MongoClient",
-        "importPath": "pymongo",
-        "description": "pymongo",
-        "isExtraImport": true,
-        "detail": "pymongo",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -73,22 +24,6 @@
         "documentation": {}
     },
     {
-        "label": "find_closest_point",
-        "importPath": "Find",
-        "description": "Find",
-        "isExtraImport": true,
-        "detail": "Find",
-        "documentation": {}
-    },
-    {
-        "label": "find_closest_point",
-        "importPath": "Find",
-        "description": "Find",
-        "isExtraImport": true,
-        "detail": "Find",
-        "documentation": {}
-    },
-    {
         "label": "get_stop",
         "importPath": "Main",
         "description": "Main",
@@ -105,28 +40,12 @@
         "documentation": {}
     },
     {
-        "label": "union",
-        "importPath": "Main",
-        "description": "Main",
-        "isExtraImport": true,
-        "detail": "Main",
-        "documentation": {}
-    },
-    {
-        "label": "math",
+        "label": "os",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "math",
-        "description": "math",
-        "detail": "math",
-        "documentation": {}
-    },
-    {
-        "label": "connexion",
-        "importPath": "connexion.connexion",
-        "description": "connexion.connexion",
-        "isExtraImport": true,
-        "detail": "connexion.connexion",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -139,6 +58,15 @@
         "documentation": {}
     },
     {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
         "label": "DBSCAN",
         "importPath": "sklearn.cluster",
         "description": "sklearn.cluster",
@@ -147,29 +75,11 @@
         "documentation": {}
     },
     {
-        "label": "connexion",
-        "kind": 2,
-        "importPath": "connexion.connexion",
-        "description": "connexion.connexion",
-        "peekOfCode": "def connexion(collectionName):\n    try:\n        host = os.getenv('host', 'localhost')\n        port = int(os.getenv('port', 27017))\n        username = os.getenv('user_')\n        password = os.getenv('password')\n        authSource = os.getenv('authentication-database', 'admin')\n        database = os.getenv('database')\n        if username and password:\n            mongo_url = f\"mongodb://{username}:{password}@{host}:{port}/?authSource={authSource}\"",
-        "detail": "connexion.connexion",
-        "documentation": {}
-    },
-    {
         "label": "listCentroide",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def listCentroide():\n    data = request.get_json() \n    distance_max = 100\n    min_people_per_group = 1\n    response = getCentroidePerCluster(data,distance_max,min_people_per_group)\n    return jsonify(response), 201\n@app.route('/api/nearest_point', methods=['POST'])\ndef nearest_point():\n    data = request.get_json() \n    response = find_closest_point(data.get(\"lat\") , data.get(\"long\"))",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "nearest_point",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def nearest_point():\n    data = request.get_json() \n    response = find_closest_point(data.get(\"lat\") , data.get(\"long\"))\n    print(response)\n    return jsonify(response) , 201\n@app.route('/api/plus_proche', methods=['POST'])\ndef plus_proche():\n    data = request.get_json() \n    union(data)\n    return \"ok\" , 201",
+        "peekOfCode": "def listCentroide():\n    data = request.get_json() \n    distance_max = 100\n    min_people_per_group = 1\n    response = getCentroidePerCluster(data,distance_max,min_people_per_group)\n    return jsonify(response), 201\n@app.route('/api/plus_proche', methods=['POST'])\ndef plus_proche():\n    data = request.get_json() \n    rep = get_stop(data)",
         "detail": "app",
         "documentation": {}
     },
@@ -178,7 +88,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def plus_proche():\n    data = request.get_json() \n    union(data)\n    return \"ok\" , 201\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=5000)",
+        "peekOfCode": "def plus_proche():\n    data = request.get_json() \n    rep = get_stop(data)\n    return jsonify(rep) , 201\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=5000)",
         "detail": "app",
         "documentation": {}
     },
@@ -187,35 +97,8 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/api/listCentroide', methods=['POST'])\ndef listCentroide():\n    data = request.get_json() \n    distance_max = 100\n    min_people_per_group = 1\n    response = getCentroidePerCluster(data,distance_max,min_people_per_group)\n    return jsonify(response), 201\n@app.route('/api/nearest_point', methods=['POST'])\ndef nearest_point():",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('/api/listCentroide', methods=['POST'])\ndef listCentroide():\n    data = request.get_json() \n    distance_max = 100\n    min_people_per_group = 1\n    response = getCentroidePerCluster(data,distance_max,min_people_per_group)\n    return jsonify(response), 201\n@app.route('/api/plus_proche', methods=['POST'])\ndef plus_proche():",
         "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "Distance",
-        "kind": 2,
-        "importPath": "Find",
-        "description": "Find",
-        "peekOfCode": "def Distance(lat1, lon1, lat2, lon2):\n    R = 6371000  # Rayon de la Terre en mètres\n    dlat = math.radians(lat2 - lat1)\n    dlon = math.radians(lon2 - lon1)\n    a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2\n    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))\n    distance = R * c\n    return distance\n# Fonction pour trouver les points dans un rayon donné\ndef find_points_within_radius(lat, lon, radius_km):",
-        "detail": "Find",
-        "documentation": {}
-    },
-    {
-        "label": "find_points_within_radius",
-        "kind": 2,
-        "importPath": "Find",
-        "description": "Find",
-        "peekOfCode": "def find_points_within_radius(lat, lon, radius_km):\n    collection = connexion(\"places\")\n    points_within_radius = []\n    places = collection.find()\n    for point in places:\n        point_lat = point['lat']\n        point_lon = point['long']\n        distance = Distance(lat, lon, point_lat, point_lon)\n        if distance <= radius_km:\n            points_within_radius.append(point)",
-        "detail": "Find",
-        "documentation": {}
-    },
-    {
-        "label": "find_closest_point",
-        "kind": 2,
-        "importPath": "Find",
-        "description": "Find",
-        "peekOfCode": "def find_closest_point(lat, lon):\n    collection = connexion(\"places\")\n    places = collection.find()\n    closest_point = None\n    min_distance = float('inf')\n    for point in places:\n        point_lat = point['lat']\n        point_lon = point['long']\n        distance = Distance(lat, lon, point_lat, point_lon)\n        if distance < min_distance:",
-        "detail": "Find",
         "documentation": {}
     },
     {
@@ -241,7 +124,7 @@
         "kind": 2,
         "importPath": "Main",
         "description": "Main",
-        "peekOfCode": "def transform_data(data):\n    data_field = data.get(\"data\", [])\n    coordinates = [(item[\"lat\"], item[\"lon\"]) for item in data_field]\n    return coordinates\ndef get_stop(listData):\n    processed_data = []\n    for item in listData:\n        result = find_closest_point(item.get(\"lat\"), item.get(\"lon\"))\n        jsondata = {\n            \"lat\": result.get(\"lat\"),",
+        "peekOfCode": "def transform_data(data):\n    data_field = data.get(\"data\", [])\n    coordinates = [(item[\"lat\"], item[\"lon\"]) for item in data_field]\n    return coordinates\ndef get_stop(data):\n    listData = getCentroidePerCluster(data)\n    processed_data = []\n    for item in listData:\n        print(item.get(\"lat\"))\n        url = f'http://{os.getenv(\"endPoint\")}/api/nearest_point?lat={item.get(\"lat\")}&lon={item.get(\"lon\")}'",
         "detail": "Main",
         "documentation": {}
     },
@@ -250,16 +133,7 @@
         "kind": 2,
         "importPath": "Main",
         "description": "Main",
-        "peekOfCode": "def get_stop(listData):\n    processed_data = []\n    for item in listData:\n        result = find_closest_point(item.get(\"lat\"), item.get(\"lon\"))\n        jsondata = {\n            \"lat\": result.get(\"lat\"),\n            \"lon\": result.get(\"lon\"),\n            \"people\": item.get(\"people\")\n        }\n        processed_data.append(jsondata)",
-        "detail": "Main",
-        "documentation": {}
-    },
-    {
-        "label": "union",
-        "kind": 2,
-        "importPath": "Main",
-        "description": "Main",
-        "peekOfCode": "def union(data):\n    print(getCentroidePerCluster(data))\n    dt = getCentroidePerCluster(data)\n    get_stop(dt)",
+        "peekOfCode": "def get_stop(data):\n    listData = getCentroidePerCluster(data)\n    processed_data = []\n    for item in listData:\n        print(item.get(\"lat\"))\n        url = f'http://{os.getenv(\"endPoint\")}/api/nearest_point?lat={item.get(\"lat\")}&lon={item.get(\"lon\")}'\n        result = requests.get(url)\n        if result.status_code == 201:\n            data = result.json()\n            jsondata = {",
         "detail": "Main",
         "documentation": {}
     }

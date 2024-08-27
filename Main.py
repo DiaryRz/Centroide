@@ -1,6 +1,7 @@
+import os
 import numpy as np
+import requests
 from sklearn.cluster import DBSCAN
-from Find import find_closest_point
 
 def calculate_centroid(cluster):
     latitudes = [point[0] for point in cluster]
@@ -36,21 +37,22 @@ def transform_data(data):
     coordinates = [(item["lat"], item["lon"]) for item in data_field]
     return coordinates
 
-def get_stop(listData):
+def get_stop(data):
+    listData = getCentroidePerCluster(data)
     processed_data = []
     for item in listData:
-        result = find_closest_point(item.get("lat"), item.get("lon"))
-        jsondata = {
-            "lat": result.get("lat"),
-            "lon": result.get("lon"),
-            "people": item.get("people")
-        }
-        processed_data.append(jsondata)
-    print(processed_data)
+        print(item.get("lat"))
+        url = f'http://{os.getenv("endPoint")}/api/nearest_point?lat={item.get("lat")}&lon={item.get("lon")}'
+
+        result = requests.get(url)
+        if result.status_code == 201:
+            data = result.json()
+            jsondata = {
+                "lat": data.get("lat"),
+                "lon": data.get("lon"),
+                "people": item.get("people")
+            }
+            processed_data.append(jsondata)
+        else:
+            return []
     return processed_data
-
-
-def union(data):
-    print(getCentroidePerCluster(data))
-    dt = getCentroidePerCluster(data)
-    get_stop(dt)
